@@ -77,14 +77,9 @@ struct mgos_htu21df *mgos_htu21df_create(struct mgos_i2c *i2c, uint8_t i2caddr) 
     free(sensor);
     return NULL;
   }
-  if (version == 0x02) {
-    LOG(LL_INFO, ("HTU21DF created at I2C 0x%02x", i2caddr));
-    return sensor;
-  }
-
-  LOG(LL_ERROR, ("Failed to create HTU21DF at I2C 0x%02x", i2caddr));
-  free(sensor);
-  return NULL;
+  LOG(LL_INFO, ("HTU21DF created at I2C 0x%02x", i2caddr));
+  return sensor;
+  
 }
 
 void mgos_htu21df_destroy(struct mgos_htu21df **sensor) {
